@@ -1,6 +1,6 @@
-# User Management API (Node.js & Express)
+# Simba SuperMarket App API (Node.js & Express)
 
-Welcome to the User Management API! This project is a backend application built with Node.js, Express, and MongoDB. It demonstrates how to create a structured and organized RESTful API using the Model-View-Controller (MVC) pattern.
+Welcome to the Simba SuperMarket App API! This project is a backend application built with Node.js, Express, and MongoDB. It demonstrates how to create a structured and organized RESTful API using the Model-View-Controller (MVC) pattern.
 
 ## Project Structure Explained
 
@@ -171,3 +171,8 @@ Make sure you have MongoDB running locally on your computer. Then, in your termi
 npm run dev
 ```
 You should see messages confirming the server has started and MongoDB is connected!
+
+## API Documentation
+
+For full API documentation, testing, and interaction, please check out our Postman Collection:
+[Simba SuperMarket App Postman Documentation](https://www.postman.com/winter-station-732871/simba-supermarket/collection/22393113-82905ff9-ac15-41d2-876a-a5b16b0b67ea)
