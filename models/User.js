@@ -8,9 +8,11 @@ const userSchema = new mongoose.Schema({
     // The user's age is a number
     age: { type: Number },
     // The user's email is a string
-    email: { type: String },
+    email: { type: String, required: true, unique: true },
+    // The user's password is a string and is required
+    password: { type: String, required: true },
     // The user's role (e.g., admin, student) is a string
-    role: { type: String },
+    role: { type: String, default: 'student' },
     // The user's grade is a string
     grade: { type: String },
     // Enable timestamps to automatically add createdAt and updatedAt dates

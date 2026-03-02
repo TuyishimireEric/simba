@@ -4,6 +4,12 @@ import express from 'express';
 import connectDB from './config/db.js';
 // Import the routes for managing users
 import userRoutes from './routes/userRoutes.js';
+// Import the routes for authentication
+import authRoutes from './routes/authRoutes.js';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 // Call the function to connect to our MongoDB database
 connectDB();
@@ -16,10 +22,12 @@ app.use(express.json());
 
 // Routes: Tell express to use the userRoutes for any request that starts with '/users'
 app.use('/users', userRoutes);
+// Use authRoutes for authentication
+app.use('/auth', authRoutes);
 
 // ─── Start Server ─────────────────────────────────────────
 // Define the port number our server will listen on
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 // Start the server and listen for incoming requests on the specified port
 app.listen(PORT, () => {
     // Log a message to the console to confirm the server is running
