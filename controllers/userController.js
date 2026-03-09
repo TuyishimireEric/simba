@@ -1,13 +1,6 @@
 // Import the User model to interact with the database
 import User from '../models/User.js';
 
-/**
- * getAllUsers Function Summary:
- * This function handles GET requests to retrieve all users from the database.
- * It uses the User model's find() method to get the data and sends it back as JSON.
- * If an error occurs, it sends a 500 (Internal Server Error) response.
- */
-// Export the asynchronous function to get all users
 export const getAllUsers = async (req, res) => {
     // Try to execute the database query
     try {
@@ -22,14 +15,7 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-/**
- * getUserById Function Summary:
- * This function handles GET requests to retrieve a single user by their ID.
- * It expects the ID to be passed in the URL parameters.
- * If the user is found, it returns the user data as JSON.
- * If not, it returns a 404 (Not Found) error.
- */
-// Export the asynchronous function to get a single user by ID
+
 export const getUserById = async (req, res) => {
     // Try to execute the database query
     try {
@@ -46,13 +32,6 @@ export const getUserById = async (req, res) => {
     }
 };
 
-/**
- * createUser Function Summary:
- * This function handles POST requests to create a new user.
- * It expects user data in the request body, creates a new User instance, and saves it.
- * Upon success, it returns a 201 (Created) status with the new user's data.
- */
-// Export the asynchronous function to create a new user
 export const createUser = async (req, res) => {
     // Try to execute the database query
     try {
@@ -69,12 +48,6 @@ export const createUser = async (req, res) => {
     }
 };
 
-/**
- * updateUser Function Summary:
- * This function handles PUT requests to update an existing user based on their ID.
- * It applies the changes sent in the request body and returns the updated user data.
- */
-// Export the asynchronous function to update a user
 export const updateUser = async (req, res) => {
     // Try to execute the database query
     try {
@@ -104,6 +77,29 @@ export const updateUser = async (req, res) => {
  * It returns a success message upon successful deletion.
  */
 // Export the asynchronous function to delete a user
+/**
+ * @swagger
+ * /users/{id}:
+ *   delete:
+ *     summary: Delete user by ID
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User ID
+ *     responses:
+ *       200:
+ *         description: User deleted successfully
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error
+ */
 export const deleteUser = async (req, res) => {
     // Try to execute the database query
     try {

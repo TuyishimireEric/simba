@@ -14,11 +14,18 @@ dotenv.config();
 // Call the function to connect to our MongoDB database
 connectDB();
 
+// Import Swagger dependencies
+import swaggerUi from 'swagger-ui-express';
+import specs from './swagger.json' with { type: 'json' };
+
 // Create an instance of the express application
 const app = express();
 
 // Middleware: Tell express to parse incoming request bodies as JSON
 app.use(express.json());
+
+// Swagger UI Route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Routes: Tell express to use the userRoutes for any request that starts with '/users'
 app.use('/users', userRoutes);
