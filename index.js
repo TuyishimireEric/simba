@@ -11,8 +11,10 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
-// Call the function to connect to our MongoDB database
-connectDB();
+// Connect to database only if not in test mode
+if (process.env.NODE_ENV !== 'test') {
+    connectDB();
+}
 
 // Import Swagger dependencies
 import swaggerUi from 'swagger-ui-express';
@@ -32,11 +34,16 @@ app.use('/users', userRoutes);
 // Use authRoutes for authentication
 app.use('/auth', authRoutes);
 
+// Export the app for testing
+export default app;
+
 // ─── Start Server ─────────────────────────────────────────
-// Define the port number our server will listen on
-const PORT = process.env.PORT || 4000;
-// Start the server and listen for incoming requests on the specified port
-app.listen(PORT, () => {
-    // Log a message to the console to confirm the server is running
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    // Define the port number our server will listen on
+    const PORT = process.env.PORT || 4000;
+    // Start the server and listen for incoming requests on the specified port
+    app.listen(PORT, () => {
+        // Log a message to the console to confirm the server is running
+        console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+}
