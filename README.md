@@ -230,6 +230,30 @@ npm run dev
 ```
 You should see messages confirming the server has started and MongoDB is connected!
 
+### 7. Add and Run Tests
+We use `jest`, `supertest`, and `mongodb-memory-server` to write and run tests without affecting our real database.
+
+1. **Install Testing Dependencies**:
+   ```bash
+   npm install --save-dev jest supertest mongodb-memory-server
+   ```
+
+2. **Add Test Script**:
+   Update your `package.json` to include a test script. Since we are using ES modules, you'll need the Node.js experimental vm modules flag:
+   ```json
+   "scripts": {
+     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+   }
+   ```
+
+3. **Set Up In-Memory DB (`tests/testDb.js`)**:
+   Create a setup file to spin up a fresh MongoDB instance in memory before testing so that tests are reliable and fast.
+
+4. **Run Tests**:
+   ```bash
+   npm test
+   ```
+
 ## API Documentation
 
 For full API documentation, testing, and interaction, please check out our Postman Collection:

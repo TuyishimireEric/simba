@@ -7,9 +7,18 @@ dotenv.config();
 export const protect = async (req, res, next) => {
     let token;
 
+    console.log("----------")
+    console.log(req.headers);
+
+    console.log(req.headers.authorization)
+    console.log("----------")
+
+
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
             // Get token from header
+
+
             token = req.headers.authorization.split(' ')[1];
 
             // Verify token
